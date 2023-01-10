@@ -50,6 +50,7 @@ jobs:
               git clone https://github.com/anakinxc/ray.git
               cd ray
               git switch dev/secretflow-ray-2.2.0
+              curl -o- https://repo.anaconda.com/miniconda/Miniconda3-py38_22.11.1-1-MacOSX-x86_64.sh | bash
               sh ./python/build-wheel-macos.sh
         - store_artifacts:
             path: .whl/*.whl
