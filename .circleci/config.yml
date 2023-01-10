@@ -59,7 +59,7 @@ jobs:
               source ~/.bash_profile
               sh ./python/build-wheel-macos.sh
         - store_artifacts:
-            path: ray/.whl/*.whl
+            path: ray/.whl/secretflow_ray-2.2.0-cp38-cp38-macosx_11_0_x86_64.whl
   linux_publish:
     docker:
       - image: registry.hub.docker.com/secretflow/secretflow-gcc11-centos7-release:0.1
