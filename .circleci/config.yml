@@ -50,7 +50,7 @@ jobs:
               git clone https://github.com/anakinxc/ray.git
               cd ray
               git switch dev/secretflow-ray-2.2.0
-              sudo sh ./python/build-wheel-macos.sh
+              sh ./python/build-wheel-macos.sh
         - store_artifacts:
             path: .whl/*.whl
   linux_publish:
