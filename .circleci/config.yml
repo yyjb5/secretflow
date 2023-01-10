@@ -38,6 +38,21 @@ jobs:
             sh run_pytest.sh
       - store_test_results:
           path: ./results.xml
+  build_sf_ray:
+    macos:
+      xcode: 13.0.0
+    resource_class: large
+    steps:
+        - run:
+            name: "build"
+            command: |
+              set -ex
+              git clone https://github.com/alipay/ray.git
+              cd ray
+              git switch dev/secretflow-ray-2.2.0
+              sh ./python/build-wheel-macos.sh
+        - store_artifacts:
+            path: .whl/*.whl
   linux_publish:
     docker:
       - image: registry.hub.docker.com/secretflow/secretflow-gcc11-centos7-release:0.1
@@ -88,10 +103,12 @@ workflows:
   default:
     jobs:
       - ut
+      - build_sf_ray
   linux_publish:
     when: << pipeline.parameters.GHA_Action >>
     jobs:
       - linux_publish
+      - macOS_publish
   macOS_publish:
     when: << pipeline.parameters.GHA_Action >>
     jobs:
