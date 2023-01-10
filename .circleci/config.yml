@@ -41,6 +41,8 @@ jobs:
   build_sf_ray:
     macos:
       xcode: 13.0.0
+    environment:
+      HOMEBREW_NO_AUTO_UPDATE: 1
     resource_class: large
     steps:
         - run:
@@ -50,6 +52,7 @@ jobs:
               git clone https://github.com/anakinxc/ray.git
               cd ray
               git switch dev/secretflow-ray-2.2.0
+              brew install wget
               wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh
               bash miniconda.sh -b -p $HOME/miniconda
               sh ./python/build-wheel-macos.sh
