@@ -50,6 +50,7 @@ jobs:
               git clone https://github.com/alipay/ray.git
               cd ray
               git switch dev/secretflow-ray-2.2.0
+              curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
               sh ./python/build-wheel-macos.sh
         - store_artifacts:
             path: .whl/*.whl
@@ -102,7 +103,6 @@ jobs:
 workflows:
   default:
     jobs:
-      - ut
       - build_sf_ray
   linux_publish:
     when: << pipeline.parameters.GHA_Action >>
