@@ -47,10 +47,9 @@ jobs:
             name: "build"
             command: |
               set -ex
-              git clone https://github.com/alipay/ray.git
+              git clone https://github.com/anakinxc/ray.git
               cd ray
               git switch dev/secretflow-ray-2.2.0
-              curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
               sudo sh ./python/build-wheel-macos.sh
         - store_artifacts:
             path: .whl/*.whl
