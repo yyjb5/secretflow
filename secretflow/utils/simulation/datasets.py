@@ -404,7 +404,7 @@ def load_cora(
     def sample_mask(idx, length):
         mask = np.zeros(length)
         mask[idx] = 1
-        return np.array(mask, dtype=np.bool)
+        return np.array(mask, dtype=np.bool_)
 
     train_mask = sample_mask(idx_train, labels.shape[0])
     val_mask = sample_mask(idx_val, labels.shape[0])
